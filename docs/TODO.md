@@ -12,6 +12,7 @@
 
 ## later tasks
 * meaningful tests
+* integrate individual bits into coherent dashboard
 * data in  parquet files using LFS
 
 ----
