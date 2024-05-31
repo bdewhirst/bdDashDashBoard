@@ -13,3 +13,15 @@
 ## later tasks
 * meaningful tests
 * data in  parquet files using LFS
+
+----
+### Stray ideas to capture electronicly:
+
+* Work with JOLTS data; change in opens by sector, field, geography?
+* salary benchmarks
+* stats on job search sales funnel
+  - apps sent
+* 1st rnd interviews offered
+* completed interviews (%)
+* offers received
+
