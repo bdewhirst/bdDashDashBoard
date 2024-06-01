@@ -1,6 +1,6 @@
 # TODO
 
-## Initial tasks to complete by EOD 20240530
+## Initial tasks to complete by EOD 20240603
 
 * MVP -- working app.
 * Abscombe's Quartet (data, viz of small multiples)
@@ -15,6 +15,7 @@
 * meaningful tests
 * integrate individual bits into coherent dashboard
 * data in  parquet files using LFS
+* see whether (suitable) flashcard program exists (SOLID, ACID, etc.)
 
 ----
 ### Stray ideas to capture electronicly:
