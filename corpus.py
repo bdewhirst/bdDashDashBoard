@@ -2,13 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-
 class Corpus:
     # crunch down data until it comprises a refreshed database or database-like schema
     def __init__(self):
         self.set_abscombe_quartet()
-        self.gapminder: pd.DataFrame = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
-
+        self.gapminder: pd.DataFrame = pd.read_csv(
+            "https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv"
+        )
 
     def set_abscombe_quartet(self) -> None:
         # load Anscombe's Quartet, based on figures from a matplotlib example
@@ -21,7 +21,7 @@ class Corpus:
 
         df1 = pd.DataFrame({"roman_cat": "I", "x": x, "y1": y1})
         df2 = pd.DataFrame({"roman_cat": "II", "x": x, "y2": y2})
-        df3= pd.DataFrame({"roman_cat": "III", "x": x, "y3": y3})
+        df3 = pd.DataFrame({"roman_cat": "III", "x": x, "y3": y3})
         df4 = pd.DataFrame({"roman_cat": "IV", "x4": x4, "y4": y4})
 
         self.abscombe_quartet = pd.concat([df1, df2, df3, df4])
