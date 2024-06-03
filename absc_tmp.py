@@ -1,49 +1,22 @@
-# from dash import Dash, html, dash_table, dcc, callback, Output, Input
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as df
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+from data.corpus import Corpus
 
 
-from corpus import Corpus
+corpus = Corpus()
+aq1_to_4 = corpus.anscombe_quartet
+
+fig = make_subplots(rows=2, cols=2, start_cell="bottom-left", subplot_titles=("III", "IV","I", "II"))
+
+fig.add_trace(go.Scatter(x=aq1_to_4[aq1_to_4.roman_cat=="I"].x, y=aq1_to_4[aq1_to_4.roman_cat=="III"].y3, mode="markers"), row=1, col=1)
+fig.add_trace(go.Scatter(x=aq1_to_4[aq1_to_4.roman_cat=="IV"].x4, y=aq1_to_4[aq1_to_4.roman_cat=="IV"].y4, mode="markers"), row=1, col=2)
+fig.add_trace(go.Scatter(x=aq1_to_4[aq1_to_4.roman_cat=="III"].x, y=aq1_to_4[aq1_to_4.roman_cat=="I"].y1, mode="markers"), row=2, col=1)
+fig.add_trace(go.Scatter(x=aq1_to_4[aq1_to_4.roman_cat=="II"].x, y=aq1_to_4[aq1_to_4.roman_cat=="II"].y2, mode="markers"), row=2, col=2)
+
+fig.update_layout(height=600, width=600, title_text="Anscombe's quartet")
+
+fig.show()
 
 
-data = Corpus()
-
-fig, axs = plt.subplots(
-    2,
-    2,
-    sharex=True,
-    sharey=True,
-    figsize=(6, 6),
-    gridspec_kw={"wspace": 0.08, "hspace": 0.08},
-)
-axs[0, 0].set(xlim=(0, 20), ylim=(2, 14))
-axs[0, 0].set(xticks=(0, 10, 20), yticks=(4, 8, 12))
-
-for ax, (label, (x, y)) in zip(axs.flat, datasets.items()):
-    ax.text(0.1, 0.9, label, fontsize=20, transform=ax.transAxes, va="top")
-    ax.tick_params(direction="in", top=True, right=True)
-    ax.plot(x, y, "o")
-
-    # linear regression
-    p1, p0 = np.polyfit(x, y, deg=1)  # slope, intercept
-    ax.axline(xy1=(0, p0), slope=p1, color="r", lw=2)
-
-    # add text box for the statistics
-    stats = (
-        f"$\\mu$ = {np.mean(y):.2f}\n"
-        f"$\\sigma$ = {np.std(y):.2f}\n"
-        f"$r$ = {np.corrcoef(x, y)[0][1]:.2f}"
-    )
-    bbox = dict(boxstyle="round", fc="blanchedalmond", ec="orange", alpha=0.5)
-    ax.text(
-        0.95,
-        0.07,
-        stats,
-        fontsize=9,
-        bbox=bbox,
-        transform=ax.transAxes,
-        horizontalalignment="right",
-    )
-
-plt.show()
+# need a table that shows: mean (7.5), standard deviation (1.94), correlation or maybe slope (0.82),
